@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <title>Application Interface</title>
+    <style>
+        
+        /* الكود الأساسي */
+  
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* يسمح بلف المربعات إلى الأسطر التالية */
+            justify-content: space-between; /* توزيع المربعات بشكل متساوٍ عبر الصف */
+            align-items: flex-start; /* محاذاة المربعات من الأعلى */
+            margin-top: 1px;
+            margin-bottom: 5px; /* إضافة مسافة أسفل الصفوف */
+            
+        }
+        .square {
+            width: 22%; /* عرض المربع ليشغل 22% من المساحة */
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            overflow: hidden;
+            margin-bottom: 20px; /* المسافة بين الصفوف */
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* تنعيم الحركة */
+
+            /* إضافة حواف متدرجة */
+            border: 5px solid transparent; /* بداية مع إطار شفاف */
+            background-image: linear-gradient(white, white), linear-gradient(to right, #ff7e5f, #feb47b); /* تدرج لوني للإطار */
+            background-origin: border-box; /* تحديد أن التدرج سيغطي الحافة */
+            background-clip: content-box, border-box; /* التطبيق على محتوى المربع والإطار */
+            
+            /* إضافة حواف مدورة */
+            border-radius: 10px; /* حواف مدورة */
+        }
+        .square:hover {
+            transform: scale(1.1); /* تكبير المربع عند المرور عليه */
+            background-color: rgba(0, 0, 0, 0.9); /* تغيير لون الخلفية */
+        }
+        .square img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* يجعل الصورة تغطي المربع بالكامل */
+            border-radius: 10px;
+        }
+        .more-link {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.1s ease-in-out; /* تنعيم حركة التغيير */
+        }
+        .more-link:hover {
+            background-color: rgba(0, 0, 0, 0.9); /* تغيير الخلفية عند التمرير */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- أول صف من المربعات -->
+    <div class="container">
+        <a href="image1.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a><a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        
+        <a href="image3.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image4.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+   
+    <!-- يمكنك إضافة المزيد من الصفوف حسب الحاجة -->
+    <a href="image1.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a><a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image2.jpg" class="square">          
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        
+        <a href="image3.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+        <a href="image4.jpg" class="square">
+            <img src="https://i.suar.me/edAPQ/l">
+        </a>
+    </div>
+    <script>
+        const squares = document.querySelectorAll('.square');
+        let isTouching = false; // حالة اللمس
+
+        // التحكم في ارتفاع الحركة
+        const liftHeight = 15; // مقدار الصعود (يمكن تغييره حسب الرغبة)
+
+        // عند بدء اللمس
+        document.body.addEventListener('touchstart', (e) => {
+            isTouching = true;
+            checkTouch(e.touches[0].clientX, e.touches[0].clientY);
+        });
+
+        // عند انتهاء اللمس
+        document.body.addEventListener('touchend', () => {
+            isTouching = false;
+            // إعادة جميع المربعات إلى وضعها الطبيعي عند إنهاء اللمس
+            squares.forEach(square => {
+                square.style.transform = 'translateY(0)';
+            });
+        });
+
+        // عند تمرير اللمس
+        document.body.addEventListener('touchmove', (e) => {
+            if (isTouching) {
+                checkTouch(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        });
+
+        // التحقق من المربعات التي تم لمسها
+        function checkTouch(x, y) {
+            squares.forEach(square => {
+                const rect = square.getBoundingClientRect(); // موقع المربع
+                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                    // إذا كان الإصبع فوق المربع، ارفع المربع قليلاً
+                    square.style.transform = `translateY(-${liftHeight}px)`;
+
+                    // إرجاع المربع إلى مكانه بعد مدة قصيرة
+                    setTimeout(() => {
+                        square.style.transform = 'translateY(0)';
+                    }, 200);
+                }
+            });
+        }
+    </script>
+  
+</body>
+</html>

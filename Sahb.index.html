@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>مربعات المكافأة</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(to bottom, #c9389c, #6a3c6b);
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap; /* السماح بالانتقال إلى صف جديد */
+      justify-content: space-evenly;
+      margin-top: 20px;
+    }
+
+    .box {
+      width: 30%;
+      aspect-ratio: 1;
+      text-align: center;
+      position: relative;
+      background-color: #eaeaea;
+      border: 3px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px; /* إضافة مسافة بين الصفوف */
+    }
+
+    .box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .progress-bar-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background-color: #ffffff;
+      border-top: 3px solid #ccc;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: red;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: #333;
+    }
+
+    .box a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none; /* تعطيل الرابط */
+      opacity: 0;
+    }
+
+    .box.unlocked a {
+      pointer-events: auto; /* تفعيل الرابط */
+    }
+
+    #reward-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div id="reward-toast">
+    مكافأة: <span id="toast-reward-amount"></span>
+  </div>
+
+  <div class="container">
+    <div class="box" id="box1">
+      <img src="image1.jpg" alt="Image 1">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress1"></div>
+      </div>
+      <span class="progress-text" id="progressText1">$0 / $2</span>
+      <a href="page2.html"></a>
+    </div>
+    <div class="box" id="box2">
+      <img src="image2.jpg" alt="Image 2">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress2"></div>
+      </div>
+      <span class="progress-text" id="progressText2">$0 / $3</span>
+      <a href="page3.html"></a>
+    </div>
+    <div class="box" id="box3">
+      <img src="image3.jpg" alt="Image 3">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress3"></div>
+      </div>
+      <span class="progress-text" id="progressText3">$0 / $4</span>
+      <a href="https://example.com"></a>
+    </div>
+    <!-- مربعات جديدة -->
+    <div class="box" id="box4">
+      <img src="image4.jpg" alt="Image 4">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress4"></div>
+      </div>
+      <span class="progress-text" id="progressText4">$0 / $5</span>
+      <a href="page4.html"></a>
+    </div>
+    <div class="box" id="box5">
+      <img src="image5.jpg" alt="Image 5">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress5"></div>
+      </div>
+      <span class="progress-text" id="progressText5">$0 / $6</span>
+      <a href="page5.html"></a>
+    </div>
+    <div class="box" id="box6">
+      <img src="image6.jpg" alt="Image 6">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress6"></div>
+      </div>
+      <span class="progress-text" id="progressText6">$0 / $7</span>
+      <a href="page6.html"></a>
+    </div>
+   
+     
+    <div class="box" id="box7">
+      <img src="image4.jpg" alt="Image 4">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress7"></div>
+      </div>
+      <span class="progress-text" id="progressText7">$0 / $10</span>
+      <a href="page4.html"></a>
+    </div>
+    <div class="box" id="box8">
+      <img src="image5.jpg" alt="Image 5">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress8"></div>
+      </div>
+      <span class="progress-text" id="progressText8">$0 / $20</span>
+      <a href="page5.html"></a>
+    </div>
+    <div class="box" id="box9">
+      <img src="image6.jpg" alt="Image 6">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress9"></div>
+      </div>
+      <span class="progress-text" id="progressText9">$0 / $30</span>
+      <a href="page6.html"></a>
+    </div>
+     
+    
+    <div class="box" id="box10">
+      <img src="image4.jpg" alt="Image 4">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress10"></div>
+      </div>
+      <span class="progress-text" id="progressText10">$0 / $10</span>
+      <a href="page4.html"></a>
+    </div>
+    <div class="box" id="box11">
+      <img src="image5.jpg" alt="Image 5">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress11"></div>
+      </div>
+      <span class="progress-text" id="progressText11">$0 / $20</span>
+      <a href="page5.html"></a>
+    </div>
+    <div class="box" id="box12">
+      <img src="image6.jpg" alt="Image 6">
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress12"></div>
+      </div>
+      <span class="progress-text" id="progressText12">$0 / $30</span>
+      <a href="page6.html"></a>
+    </div>
+  
+  </div>
+
+  <script>
+    // استعادة القيم المخزنة
+    let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+    let walletTotal = parseFloat(localStorage.getItem('walletTotal')) || 0;
+
+    const rewardThreshold = 20;
+    const rewardAmount = 0.01;
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', event => {
+            if (!["page2.html", "page3.html"].includes(link.getAttribute('href'))) {
+                clickCount++;
+                localStorage.setItem('clickCount', clickCount);
+
+                if (clickCount >= rewardThreshold) {
+                    walletTotal += rewardAmount;
+                    localStorage.setItem('walletTotal', walletTotal);
+
+                    // تحديث شريط التقدم
+                    updateProgress("box1", "progress1", "progressText1", walletTotal);
+                    updateProgress("box2", "progress2", "progressText2", walletTotal);
+                    updateProgress("box3", "progress3", "progressText3", walletTotal);
+                    updateProgress("box4", "progress4", "progressText4", walletTotal);
+                    updateProgress("box5", "progress5", "progressText5", walletTotal);
+                    updateProgress("box6", "progress6", "progressText6", walletTotal);
+                   
+    updateProgress("box7", "progress7", "progressText7", walletTotal);
+    updateProgress("box8", "progress8", "progressText8", walletTotal);
+    updateProgress("box9", "progress9", "progressText9", walletTotal);
+    updateProgress("box10", "progress10", "progressText10", walletTotal);
+    updateProgress("box11", "progress11", "progressText11", walletTotal);
+    updateProgress("box12", "progress12", "progressText12", walletTotal);
+  
+
+                    // حفظ سجل المكافأة في localStorage
+                    const rewardsHistory = JSON.parse(localStorage.getItem('rewardsHistory')) || [];
+                    rewardsHistory.push({ amount: rewardAmount, timestamp: Date.now() });
+                    localStorage.setItem('rewardsHistory', JSON.stringify(rewardsHistory));
+
+                    // عرض الإشعار
+                    const rewardToast = document.getElementById('reward-toast');
+                    document.getElementById('toast-reward-amount').textContent = `$${rewardAmount}`;
+                    rewardToast.style.display = 'block';
+
+                    setTimeout(() => {
+                        rewardToast.style.display = 'none';
+                    }, 4000);
+
+                    clickCount = 0;
+                    localStorage.setItem('clickCount', clickCount);
+                }
+            }
+        });
+    });
+
+    // الحدود الدنيا لكل مربع
+    const thresholds = {
+      box1: 2,
+      box2: 3,
+      box3: 4,
+      box4: 5,
+      box5: 6,
+      box6: 7,
+      box7: 2,
+      box8: 3,
+      box9: 5,
+      box10: 10,
+      box11: 200,
+      box12: 300
+    };
+
+    // تحديث شريط التقدم بناءً على الحدود الدنيا لكل مربع
+    function updateProgress(boxId, progressId, textId, currentReward) {
+        const progressBar = document.getElementById(progressId);
+        const progressText = document.getElementById(textId);
+        const box = document.getElementById(boxId);
+
+        const maxReward = thresholds[boxId]; // الحد الأدنى لهذا المربع
+        const progressPercentage = Math.min((currentReward / maxReward) * 100, 100);
+
+        progressBar.style.width = progressPercentage + "%";
+
+        // تعديل نص الشريط بناءً على الحد الأدنى
+        progressText.textContent = `$${currentReward.toFixed(2)} / $${maxReward}`;
+
+        // تغيير اللون إذا اكتمل الشريط
+        if (currentReward >= maxReward) {
+            progressBar.style.backgroundColor = "green"; // اللون الأخضر عند الاكتمال
+            box.classList.add("unlocked");
+        } else {
+            progressBar.style.backgroundColor = "red"; // اللون الأحمر عند التقدم
+        }
+    }
+
+    // استعادة حالة شريط التقدم عند تحميل الصفحة
+    updateProgress("box1", "progress1", "progressText1", walletTotal);
+    updateProgress("box2", "progress2", "progressText2", walletTotal);
+    updateProgress("box3", "progress3", "progressText3", walletTotal);
+    updateProgress("box4", "progress4", "progressText4", walletTotal);
+    updateProgress("box5", "progress5", "progressText5", walletTotal);
+    updateProgress("box6", "progress6", "progressText6", walletTotal);
+     
+    updateProgress("box7", "progress7", "progressText7", walletTotal);
+    updateProgress("box8", "progress8", "progressText8", walletTotal);
+    updateProgress("box9", "progress9", "progressText9", walletTotal);
+    updateProgress("box10", "progress10", "progressText10", walletTotal);
+    updateProgress("box11", "progress11", "progressText11", walletTotal);
+    updateProgress("box12", "progress12", "progressText12", walletTotal);
+  
+      
+</script>
+</body>
+</html>
